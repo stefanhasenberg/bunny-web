@@ -7,7 +7,7 @@ import dts from 'vite-plugin-dts';
 import { peerDependencies } from './package.json';
 
 // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
-const isStorybook = process.env.STORYBOOK_ENV?.trim() === 'storybook';
+const isStorybook = false; //process.env.STORYBOOK_ENV?.trim() === 'storybook';
 
 export default defineConfig({
   optimizeDeps: {

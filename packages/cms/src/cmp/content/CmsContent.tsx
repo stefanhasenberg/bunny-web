@@ -1,6 +1,6 @@
-import React from "react";
-import CmsPage from "../page/CmsPage";
-import CmsGrid from "../grid/CmsGrid";
+import React, {lazy} from "react";
+const CmsPage = lazy(() => import('../page/CmsPage'));
+const CmsGrid = lazy(() => import('../grid/CmsGrid'));
 // import CmsArticle from "./CmsArticle";
 // import CmsFunctionalComponent from "./CmsFunctionalComponent";
 // import CmsTextContent from "./CmsTextContent";

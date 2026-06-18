@@ -41,7 +41,7 @@ function useFetch<T extends Object> (url:string, options:any = {}) {
         return () => controller.abort();
     }, [url]);
 
-    return { data, loading, error };
+    return [ data, loading, error ] as const;
 };
 
 export default useFetch;

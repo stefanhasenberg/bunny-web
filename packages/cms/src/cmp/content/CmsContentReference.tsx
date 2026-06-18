@@ -10,6 +10,7 @@ type IContentRef = {
 };
 
 const CmsContentReference : React.FC<IContentRef> = ({ docId}) => {
+    console.log(useState);
     const [data, setData] = useState(undefined as IGenericContent | undefined);
     const {getContent} = useContext(CmsContext);
 

@@ -1,0 +1,11 @@
+{
+  "router.path.default": "/en/news",
+  "router.path.default.de": "/de/neuigkeiten",
+  "router.path.default.en": "/en/news",
+  "api": {
+    "cms": {
+      "pages": "/api/cms/{{language}}/pages",
+      "page": "/api/cms/{{language}}/page/{{id}}"
+    }
+  }
+}
