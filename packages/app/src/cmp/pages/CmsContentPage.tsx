@@ -13,7 +13,7 @@ type IPage = paths["/cms/{language}/page/{id}"]["get"]["responses"]["200"]["cont
 const CmsContentPage = ({id, language}: CmsContentPageParams) : React.JSX.Element => {
     const {t, i18n} = useTranslation("common");
     const [data, loading, error] = useFetch<IPage>(t("api.cms.page", {"language": language, "id": id}));
-    console.log("Page", data)
+    console.log("Page", {id, language, data})
     return <>
         {!loading && error}
         {loading ? <LoadingSpinner /> : data?._translations?.filter(trans => trans.language === i18n?.language).map(t => <CmsContent key={t?.content} {...t.content} />)}
