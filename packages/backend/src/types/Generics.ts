@@ -1,3 +1,3 @@
 export class TranslatedContent<T> {
-    _translations: T[];
+  _translations: T[];
 }

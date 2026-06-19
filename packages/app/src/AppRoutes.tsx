@@ -48,10 +48,10 @@ const AppRoutes: React.FC = () => {
                             language={page.language as ("de" | "en")}/> : <></>}/>)}
 
         <Route path="/de">
-            <Route path="artikel/:articleId" element={<CmsArticlePage language="de"/>}/>
+            <Route path="artikel/:articleId" element={<CmsArticlePage articleId={""} language="de"/>}/>
         </Route>
         <Route path="/en">
-            <Route path="article/:articleId" element={<CmsArticlePage language="en"/>}/>
+            <Route path="article/:articleId" element={<CmsArticlePage articleId={""} language="en"/>}/>
         </Route>
         <Route path="*" element={<NotFound/>}/>
     </Route>

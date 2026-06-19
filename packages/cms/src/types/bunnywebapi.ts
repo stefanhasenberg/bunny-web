@@ -84,6 +84,22 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/cms/{language}/article/{seoName}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["SanityController_getArticle"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
 }
 export type webhooks = Record<string, never>;
 export interface components {
@@ -173,6 +189,25 @@ export interface components {
             src: string;
             name: string;
             sourceItems: components["schemas"]["ImageSourceItem"][];
+        };
+        ArticleGridRow: Record<string, never>;
+        ArticleGrid: {
+            columnSizes: number[];
+            rows: components["schemas"]["ArticleGridRow"][];
+        };
+        ArticlePage: {
+            _id: string;
+            category: string;
+            headline: string;
+            subheadline: string;
+            contentGrid: components["schemas"]["ArticleGrid"];
+            content: string;
+            grid: components["schemas"]["Grid"];
+            image: components["schemas"]["Image"];
+            published: boolean;
+            urlPath: string;
+            seoName: string;
+            author: string;
         };
     };
     responses: never;
@@ -291,6 +326,29 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["Image"];
+                };
+            };
+        };
+    };
+    SanityController_getArticle: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                language: string;
+                seoName: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Retrieve image paths */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ArticlePage"];
                 };
             };
         };

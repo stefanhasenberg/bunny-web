@@ -59,7 +59,7 @@ const CmsMainPage : React.FC = () => {
     return loadingPages ?
         <LoadingSpinner />
         : (params?.segment1 === "artikel" || params?.segment1 === "article") ?
-            (<CmsArticlePage language={i18n?.language as ("de" | "en")} />)
+            (<CmsArticlePage articleSeoName={params?.segment2??''} language={i18n?.language as ("de" | "en")} />)
             : currrentPage && !errorPages ? <CmsContentPage id={currrentPage?._id} language={currrentPage?.language as ("de" | "en")} /> : <NotFound />;
 }
 

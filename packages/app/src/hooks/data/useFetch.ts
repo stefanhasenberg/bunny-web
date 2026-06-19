@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 
-function useFetch<T extends Object> (url:string, options:any = {}) {
+function useFetch<T extends object> (url:string, options:any = {}) {
     const [data, setData] = useState(null as T | null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);

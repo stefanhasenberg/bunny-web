@@ -5,7 +5,9 @@
   "api": {
     "cms": {
       "pages": "/api/cms/{{language}}/pages",
-      "page": "/api/cms/{{language}}/page/{{id}}"
+      "page": "/api/cms/{{language}}/page/{{id}}",
+      "content": "/api/cms/{{language}}/content/{{id}}",
+      "article": "/api/cms/{{language}}/article/{{seoName}}"
     }
   }
 }
