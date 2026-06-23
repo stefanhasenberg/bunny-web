@@ -33,6 +33,7 @@
   },
   "dependencies": {
     "@portabletext/react": "^6.0.2",
+    "@sanity/image-url": "^2.1.1",
     "@stefanhasenberg/bunny-ui": "^0.8.0",
     "@types/react-helmet": "^6.1.11",
     "@vitest/browser-playwright": "^4.0.18",

@@ -75,9 +75,9 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        get: operations["SanityController_getImage"];
+        get?: never;
         put?: never;
-        post?: never;
+        post: operations["SanityController_getImage"];
         delete?: never;
         options?: never;
         head?: never;
@@ -131,9 +131,6 @@ export interface components {
         ContentRef: {
             docId: string;
         };
-        ImageRef: {
-            name: string;
-        };
         GridCell: {
             _type: string;
             _key: string;
@@ -143,7 +140,7 @@ export interface components {
             list: components["schemas"]["List"];
             padding: Record<string, never>;
             contentRef: components["schemas"]["ContentRef"];
-            image: components["schemas"]["ImageRef"];
+            image: Record<string, never>;
         };
         GridRow: {
             _type: string;
@@ -203,7 +200,7 @@ export interface components {
             contentGrid: components["schemas"]["ArticleGrid"];
             content: string;
             grid: components["schemas"]["Grid"];
-            image: components["schemas"]["Image"];
+            image: Record<string, never>;
             published: boolean;
             urlPath: string;
             seoName: string;

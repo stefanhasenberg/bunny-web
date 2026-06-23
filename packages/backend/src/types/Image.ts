@@ -15,3 +15,17 @@ export class Image {
   @ApiProperty({ isArray: true, type: ImageSourceItem })
   sourceItems: ImageSourceItem[];
 }
+
+export class ImageAssetRef {
+  @ApiProperty()
+  _ref: string;
+  @ApiProperty()
+  _type: 'reference';
+}
+
+export class ImageRef {
+  @ApiProperty()
+  _type: 'image';
+  @ApiProperty({ isArray: false, type: ImageAssetRef })
+  asset: ImageAssetRef;
+}

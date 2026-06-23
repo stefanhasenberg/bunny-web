@@ -1,10 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { List } from './List';
-
-export class ImageRef {
-  @ApiProperty()
-  name: string;
-}
+import type { SanityImageObject } from '@sanity/image-url';
 
 export class ContentRef {
   @ApiProperty()
@@ -29,7 +25,7 @@ export class GridCell {
   @ApiProperty()
   contentRef: ContentRef;
   @ApiProperty()
-  image: ImageRef;
+  image: SanityImageObject;
 }
 
 export class GridRow {

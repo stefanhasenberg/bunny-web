@@ -1,9 +1,10 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { SanityService } from './sanity.service';
 import { PageInfo, PageLayout, TranslatedPage } from './types/Pages';
 import { ApiExtraModels, ApiOkResponse } from '@nestjs/swagger';
 import { Image } from './types/Image';
 import { ArticlePage } from './types/Article';
+import type { SanityImageObject } from '@sanity/image-url';
 
 @Controller('cms')
 @ApiExtraModels(PageInfo)
@@ -60,14 +61,18 @@ export class SanityController {
     return await this.sanityService.getContentReference(language, id);
   }
 
-  @Get(':language/image/:name')
+  @Post(':language/image/:name')
   @ApiOkResponse({
     description: 'Retrieve image paths',
     type: Image,
     isArray: false,
   })
-  getImage(@Param('name') name: string): Image {
-    return this.sanityService.getImage(name);
+  getImage(
+    @Param('name') name: string,
+    @Body() imgSrc: SanityImageObject,
+  ): Image {
+    console.log('Image obj', imgSrc);
+    return this.sanityService.getImage(name, imgSrc);
   }
 
   @Get(':language/article/:seoName')

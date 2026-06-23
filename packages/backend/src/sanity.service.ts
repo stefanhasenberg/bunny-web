@@ -1,7 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { SanityClient, createClient } from '@sanity/client';
 import { PageInfo, PageLayout, TranslatedPage } from './types/Pages';
-import { createImageUrlBuilder } from '@sanity/image-url';
+import {
+  createImageUrlBuilder,
+  SanityImageObject,
+} from '@sanity/image-url';
 import { Image } from './types/Image';
 import { ArticlePage } from './types/Article';
 
@@ -15,28 +18,29 @@ export class SanityService {
     token: process.env.SANITY_TOKEN,
   });
 
-  public getImage(name: string): Image {
+  public getImage(name: string, imgSrc: SanityImageObject): Image {
     const imageUrlBuilder = createImageUrlBuilder(this.client);
+    const imgBuilder = imageUrlBuilder.image(imgSrc);
     const img = new Image();
     img.name = name;
-    img.src = imageUrlBuilder.image({ name: name }).url();
+    img.src = imgBuilder.url();
     img.sourceItems = [];
     img.sourceItems.push(
       {
         media: `(min-width:1280px)`,
-        srcSet: `${imageUrlBuilder.image({ name: name }).width(1280).url()}`,
+        srcSet: `${imgBuilder.width(1280).url()}`,
       },
       {
         media: `(min-width:1024px)`,
-        srcSet: `${imageUrlBuilder.image({ name: name }).width(1024).url()}`,
+        srcSet: `${imgBuilder.width(1024).url()}`,
       },
       {
         media: `(min-width:768px)`,
-        srcSet: `${imageUrlBuilder.image({ name: name }).width(768).url()}`,
+        srcSet: `${imgBuilder.width(768).url()}`,
       },
       {
         media: `(min-width:512px)`,
-        srcSet: `${imageUrlBuilder.image({ name: name }).width(512).url()}`,
+        srcSet: `${imgBuilder.width(512).url()}`,
       },
     );
 
@@ -130,8 +134,18 @@ export class SanityService {
     return this.performCmsQuery<ArticlePage>(
       'article',
       undefined,
-      ``,
+      `_id,
+            category,
+            headline,
+            subheadline,
+            content,
+            image,
+            published,
+            urlPath,
+            seoName,
+            author`,
       `seoName == '${seoName}'`,
+      language,
     );
   }
 

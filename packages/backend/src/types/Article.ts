@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Grid } from './Grid';
-import { Image } from './Image';
+import type { SanityImageObject } from '@sanity/image-url';
 
 export class ArticleGridColumn {
   @ApiProperty()
@@ -44,7 +44,7 @@ export class ArticlePage {
   @ApiProperty()
   grid?: Grid;
   @ApiProperty()
-  image?: Image;
+  image?: SanityImageObject;
   @ApiProperty()
   published?: boolean;
   @ApiProperty()
