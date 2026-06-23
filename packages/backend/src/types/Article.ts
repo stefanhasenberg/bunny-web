@@ -38,11 +38,7 @@ export class ArticlePage {
   @ApiProperty()
   subheadline?: string;
   @ApiProperty()
-  contentGrid?: ArticleGrid;
-  @ApiProperty()
-  content?: string;
-  @ApiProperty()
-  grid?: Grid;
+  content?: Grid;
   @ApiProperty()
   image?: SanityImageObject;
   @ApiProperty()

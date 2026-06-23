@@ -9,35 +9,8 @@ import {Grid} from "@stefanhasenberg/bunny-ui/page";
 type IGrid = components["schemas"]["Grid"];
 
 const CmsGrid : React.FC<IGrid> = ({rows}) => {
-    const MAX_CELLS_XL = 12;
-    const MAX_CELLS_LG = 12;
-    const MAX_CELLS_MD = 6;
-    const MAX_CELLS_SM = 3;
-    const MAX_CELLS_XS = 1;
-
-    const getCellCount = (maxCells: number, cellsOfRow: number) => {
-        const cellWidth = Math.floor(12 / cellsOfRow);
-        return cellsOfRow <= maxCells ? cellWidth : Math.floor(12/ maxCells);
-    }
-
-    const getMarginForCell = (margin?: ("none" | "small" | "medium" | "large")) => {
-        if(!margin) {
-            return '0';
-        }
-        switch(margin) {
-            case "small":
-                return '0.5em';
-            case "medium":
-                return '1em';
-            case "large":
-                return '1.5em';
-            default:
-                return '0';
-        }
-    }
-    
     return <>
-        {rows?.map((row, i) => <Grid key={`grid_row_${i}`}>
+        {rows?.map((row, i) => <Grid key={`grid_row_${i}`} gridType={'one-one'} gridGap={"medium"}>
             {row?.cells?.map((cell, c) => <div
                 key={`grid_cell_${i}_${c}_${cell.contentType}`}
                 >

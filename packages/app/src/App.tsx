@@ -15,7 +15,6 @@ type IImage = paths["/cms/{language}/image/{name}"]["post"]["responses"]["200"][
 function App() {
     const {t, i18n} = useTranslation("common");
     const fetchImage = async (name: string, imgSrc: Record<string, never>) => {
-        console.log("Fetching image", {name, imgSrc});
         try {
             const controller = new AbortController();
             const res = await fetch(`${t('api.cms.image', {language: i18n?.language, imageName: name})}`, {
@@ -41,7 +40,6 @@ function App() {
 
   return (
       <CmsContextProvider getImage={async (name, imgSrc) => {
-          console.log("TODO: Fetch image", name);
           return fetchImage(name, imgSrc);
       }} getContent={async () => {
           console.log("TODO: Fetch content");

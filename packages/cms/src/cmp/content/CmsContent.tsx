@@ -1,4 +1,5 @@
 import React, {lazy} from "react";
+const CmsArticle = lazy(() => import('../article/CmsArticle'));
 const CmsPage = lazy(() => import('../page/CmsPage'));
 const CmsGrid = lazy(() => import('../grid/CmsGrid'));
 // import CmsArticle from "./CmsArticle";
@@ -12,7 +13,7 @@ const CmsContent : React.FC<any> = (props) => {
     return <>
         {type === "page" && <CmsPage {...props} />}
         {type === "grid" && <CmsGrid {...props} />}
-        {/*{type === "article" && <CmsArticle {...props} />}*/}
+        {type === "article" && <CmsArticle {...props} />}
         {/*{type === "functionalcomponent" && <CmsFunctionalComponent {...props} />}*/}
         {/*{type === "textcontent" && <CmsTextContent {...props} />}*/}
         {/*{type === "infotile" && <CmsInfoTile {...props} />}*/}

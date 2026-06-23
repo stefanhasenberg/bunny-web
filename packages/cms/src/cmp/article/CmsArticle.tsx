@@ -12,7 +12,7 @@ type ICmsArticle = {
 }
 
 const CmsArticle : React.FC<ICmsArticle> = ({content, headlineHierarchy}) => {
-    console.log(content?.image)
+    console.log(content)
 
     return <>
         <Helmet>
@@ -27,7 +27,7 @@ const CmsArticle : React.FC<ICmsArticle> = ({content, headlineHierarchy}) => {
             <Text type={`h${headlineHierarchy}`} content={content?.headline} />
             <Text type={`h${headlineHierarchy + 1 as (2 | 3 | 4 | 5 | 6)}`} content={content?.subheadline} />
             <CmsImage {...content?.image} />
-            <CmsGrid {...content?.grid} />
+            <CmsGrid {...content?.content} />
             <Text type={"small"} content={content?.author} />
             </Collection>
         </article>

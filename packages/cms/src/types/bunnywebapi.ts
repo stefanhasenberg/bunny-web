@@ -187,19 +187,12 @@ export interface components {
             name: string;
             sourceItems: components["schemas"]["ImageSourceItem"][];
         };
-        ArticleGridRow: Record<string, never>;
-        ArticleGrid: {
-            columnSizes: number[];
-            rows: components["schemas"]["ArticleGridRow"][];
-        };
         ArticlePage: {
             _id: string;
             category: string;
             headline: string;
             subheadline: string;
-            contentGrid: components["schemas"]["ArticleGrid"];
-            content: string;
-            grid: components["schemas"]["Grid"];
+            content: components["schemas"]["Grid"];
             image: Record<string, never>;
             published: boolean;
             urlPath: string;
